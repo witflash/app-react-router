@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Register } from './Register';
+import { Login } from './Login';
 
 export class Home extends Component {
   constructor(props) {
@@ -13,10 +14,9 @@ export class Home extends Component {
   }
 
   render() {
-    console.log(this.props);
-    const home = this.isLoginned() ? <h2>Home</h2> : <Register />;
+    // const home = this.isLoginned() ? <h2>Home</h2> : <Login />;
 
-    return home;
+    return <Home />;
   }
 }
 

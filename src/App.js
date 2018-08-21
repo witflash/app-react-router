@@ -11,6 +11,7 @@ export class App extends Component {
     this.state = {
       isLoginned: false,
       userId: false,
+      connected: false,
     };
     this.session = new Session();
     this.api = new Api('http://localhost:3003/users');
@@ -25,6 +26,9 @@ export class App extends Component {
 
     this.api.getData().then(response => {
       const users = response.data;
+      if (users) {
+        this.setState({ connected: true });
+      }
       for (let i = 0; i < users.length; i += 1) {
         const tempToken = this.session.createToken(users[i]);
         if (tempToken === sessionToken) {
@@ -39,16 +43,18 @@ export class App extends Component {
 
   render() {
     const blockConnect = <div className="text-center">Connecting to server...</div>;
-    const blockLoad = this.state.isLoginned ? <Auth session={this.state} /> : blockConnect;
+    const blockLoad = this.state.connected ? <Auth session={this.state} /> : blockConnect;
 
     return (
-      <div className="container">
-        <h1 className="pt-3 mb-5">Mate Social Network</h1>
-        <div className="page">
-          {blockLoad}
-          <Footer />
+      <Router>
+        <div className="container">
+          <h1 className="pt-3 mb-5">Mate Social Network</h1>
+          <div className="col-12 col-md-6 col-lg-4">
+            {blockLoad}
+            <Footer />
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }

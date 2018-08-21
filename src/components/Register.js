@@ -1,34 +1,55 @@
 import React, { Component } from 'react';
 
 export class Register extends Component {
+  constructor(props) {
+    super(props);
+
+    this.login = this.login.bind(this);
+  }
+
+  login(e) {
+    e.preventDefault();
+    console.log(e.target);
+    const formData = new FormData();
+    const userData = getFormFields(e.target);
+    console.log('userData: ', userData);
+  }
+
+  getFormFields(form) {
+    let formField;
+    for (let i = 0; i < userData.length; i += 1) {
+      console.log(formField[i]);
+    }
+  }
+
   render() {
     return (
       <div>
         <h2 className="mb-4">Register new user</h2>
 
-        <form className="form" name="form-login">
+        <form className="form" name="form-login" onSubmit={this.login}>
           <div className="form-group">
-            <label for="name">Name:</label>
+            <label htmlFor="name">Name:</label>
             <input type="text" id="name" name="name" className="form-control" />
           </div>
 
           <div className="form-group">
-            <label for="country">Country:</label>
+            <label htmlFor="country">Country:</label>
             <input type="text" id="country" name="country" className="form-control" />
           </div>
 
           <div className="form-group">
-            <label for="email">Email:</label>
+            <label htmlFor="email">Email:</label>
             <input type="email" id="email" name="email" className="form-control" />
           </div>
 
           <div className="form-group">
-            <label for="login">Enter Login:</label>
+            <label htmlFor="login">Enter Login:</label>
             <input type="text" id="login" name="login" className="form-control" />
           </div>
 
           <div className="form-group">
-            <label for="password">Enter password:</label>
+            <label htmlFor="password">Enter password:</label>
             <input type="password" id="password" name="password" className="form-control" />
           </div>
 
