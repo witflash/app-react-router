@@ -5,6 +5,46 @@
       "login": "admin",
       "name": "Admin",
       "lastSession": "42"
+    },
+    {
+      "name": "Andriy Mambyk",
+      "country": "Украина",
+      "email": "witflash@gmail.com",
+      "login": "q",
+      "password": "q",
+      "id": 1
+    },
+    {
+      "name": "Andriy Mambyk",
+      "country": "Украина",
+      "email": "witflash@gmail.com",
+      "login": "w",
+      "password": "w",
+      "id": 2
+    },
+    {
+      "name": "Andriy Mambyk",
+      "country": "Украина",
+      "email": "witflash@gmail.com",
+      "login": "q",
+      "password": "q",
+      "id": 3
+    },
+    {
+      "name": "Andriy Mambyk",
+      "country": "Украина",
+      "email": "witflash@gmail.com",
+      "login": "q",
+      "password": "q",
+      "id": 4
+    },
+    {
+      "name": "Andriy Mambik",
+      "country": "Украина",
+      "email": "witflash@gmail.com",
+      "login": "q",
+      "password": "q",
+      "id": 5
     }
   ]
 }

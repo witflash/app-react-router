@@ -16,6 +16,10 @@ export class Auth extends Component {
 
   addUser(user) {
     console.log(user);
+    this.api.addUser(user).then(response => {
+      console.log('response: ', response);
+      console.log(this.props.history);
+    });
   }
 
   render() {
@@ -28,7 +32,7 @@ export class Auth extends Component {
         />
         <Route path="/login" component={Login} />
         <Route path="/edit" component={Edit} />
-        <Route render={<Register addUser={this.addUser} />} path="/register" />
+        <Route render={() => <Register addUser={this.addUser} />} path="/register" />
         <Route component={NotFound} />
       </Switch>
     );
