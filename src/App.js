@@ -9,9 +9,9 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      connected: false,
       isLoginned: false,
       userId: false,
-      connected: false,
     };
     this.session = new Session();
     this.api = new Api('http://localhost:3003/users');
@@ -20,9 +20,6 @@ export class App extends Component {
 
   setSession() {
     const sessionToken = this.session.getToken();
-    if (!sessionToken) {
-      return;
-    }
 
     this.api.getData().then(response => {
       const users = response.data;
@@ -33,17 +30,20 @@ export class App extends Component {
         const tempToken = this.session.createToken(users[i]);
         if (tempToken === sessionToken) {
           this.setState({ isLoginned: true, userId: users[i].id });
+          break;
         }
       }
       return;
     });
   }
 
-  componentDidMount() {}
-
   render() {
     const blockConnect = <div className="text-center">Connecting to server...</div>;
-    const blockLoad = this.state.connected ? <Auth session={this.state} /> : blockConnect;
+    const blockLoad = this.state.connected ? (
+      <Auth session={this.state} api={this.api} />
+    ) : (
+      blockConnect
+    );
 
     return (
       <Router>

@@ -7,6 +7,17 @@ import { Edit } from './components/Edit';
 import { Register } from './components/Register';
 
 export class Auth extends Component {
+  constructor(props) {
+    super(props);
+
+    this.api = this.props.api;
+    this.addUser = this.addUser.bind(this);
+  }
+
+  addUser(user) {
+    console.log(user);
+  }
+
   render() {
     return (
       <Switch>
@@ -17,7 +28,7 @@ export class Auth extends Component {
         />
         <Route path="/login" component={Login} />
         <Route path="/edit" component={Edit} />
-        <Route path="/register" component={Register} />
+        <Route render={<Register addUser={this.addUser} />} path="/register" />
         <Route component={NotFound} />
       </Switch>
     );

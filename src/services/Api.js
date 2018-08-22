@@ -8,6 +8,10 @@ class Api {
   getData() {
     return axios.get(this.API_URL);
   }
+
+  addUser(user) {
+    return axios.post(this.API_URL, user);
+  }
 }
 
 export default Api;
